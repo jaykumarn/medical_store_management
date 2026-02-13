@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load static %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -147,8 +147,12 @@
                             <label for="dname" class="form-control-label">Dealer Name:</label>
                         </div>
                         <div class="form-group col-md-8">
-                            <input type="text" name="dname" class="form-control" id="dname" placeholder="Dealer Name"
-                                   value="{{ med.dname }}"/>
+                            <select name="dname" class="form-control" id="dname" required>
+                                <option value="">Select Dealer</option>
+                                {% for dealer in dealers %}
+                                    <option value="{{ dealer.dname }}" {% if med.dname == dealer.dname %}selected{% endif %}>{{ dealer.dname }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="row padtop5">
@@ -222,8 +226,12 @@
                             <label for="dname" class="form-control-label">Dealer Name:</label>
                         </div>
                         <div class="form-group col-md-8">
-                            <input type="text" name="dname" class="form-control" id="dname" placeholder="Dealer Name"
-                                   value=""/>
+                            <select name="dname" class="form-control" id="dname" required>
+                                <option value="">Select Dealer</option>
+                                {% for dealer in dealers %}
+                                    <option value="{{ dealer.dname }}">{{ dealer.dname }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                     </div>
                     <div class="row padtop5">

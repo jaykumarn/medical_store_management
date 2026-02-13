@@ -167,7 +167,8 @@ def custtable(request):
 
 
 def medform(request):
-    dict = {'add': True}
+    dealers = Dealer.objects.all()
+    dict = {'add': True, 'dealers': dealers}
     return render(request, 'pharma/med.html', dict)
 
 
@@ -203,7 +204,8 @@ def medformupdate(request, foo):
 
 def medformview(request, foo):
     med = Medicine.objects.get(pk=foo)
-    dict = {'med': med}
+    dealers = Dealer.objects.all()
+    dict = {'med': med, 'dealers': dealers}
     return render(request, 'pharma/med.html', dict)
 
 
@@ -220,7 +222,8 @@ def medtable(request):
 
 
 def purchaseform(request):
-    dict = {'add': True}
+    medicines = Medicine.objects.all()
+    dict = {'add': True, 'medicines': medicines}
     return render(request, 'pharma/purchase.html', dict)
 
 
@@ -260,7 +263,8 @@ def purchaseformupdate(request, foo):
 
 def purchaseformview(request, foo):
     purchase = Purchase.objects.get(pk=foo)
-    dict = {'purchase': purchase}
+    medicines = Medicine.objects.all()
+    dict = {'purchase': purchase, 'medicines': medicines}
     return render(request, 'pharma/purchase.html', dict)
 
 
